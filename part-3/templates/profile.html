@@ -95,6 +95,12 @@
             <div class="profile-item">
                 <span>Course:</span> {{ course }}
             </div>
+			<div class="profile-item">
+                <span>Email:</span> {{ Email }}
+            </div>
+			<div class="profile-item">
+                <span>Phone:</span> {{ Phone }}
+            </div>
             <div class="profile-item">
                 <span>Status:</span>
                 <!-- Using Jinja2 conditional (if/else) -->
@@ -114,6 +120,9 @@ return render_template('profile.html',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;name='Sarah',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;age=22,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;course='Web Development',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Email='example@gmail.com',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Phone='9876543210',<br>
+
 &nbsp;&nbsp;&nbsp;&nbsp;is_enrolled=True)
         </div>
 

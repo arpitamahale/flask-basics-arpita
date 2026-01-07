@@ -24,12 +24,16 @@ def profile():
         'name': 'Sarah',
         'age': 22,
         'course': 'Web Development',
+        'Email':'example@gmail.com',
+        'Phone':'9876543210',
         'is_enrolled': True
     }
     return render_template('profile.html',  # Pass multiple variables to template
                            name=user_data['name'],
                            age=user_data['age'],
                            course=user_data['course'],
+                           Email=user_data['Email'],
+                           Phone=user_data['Phone'],
                            is_enrolled=user_data['is_enrolled'])
 
 
@@ -41,7 +45,7 @@ def skills():
 
 @app.route('/projects')
 def projects():
-    project_list = [  # List of dictionaries - common pattern for database-like data
+    project_list = [
         {'name': 'Personal Website', 'status': 'Completed', 'tech': 'HTML/CSS'},
         {'name': 'Flask Blog', 'status': 'In Progress', 'tech': 'Python/Flask'},
         {'name': 'Weather App', 'status': 'Planned', 'tech': 'JavaScript'},
