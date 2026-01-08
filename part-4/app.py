@@ -7,7 +7,7 @@ How to Run:
 3. Try different URLs like /user/YourName or /post/123
 """
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
 
@@ -17,33 +17,33 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/user/<username>')  # <username> captures any text from URL, visit: /user/Alice, /user/Bob
+@app.route('/user/<username>')
 def user_profile(username):
     return render_template('user.html', username=username)
 
 
-@app.route('/post/<int:post_id>')  # <int:post_id> captures only integers, /post/abc returns 404
+@app.route('/post/<int:post_id>')
 def show_post(post_id):
-    posts = {  # Simulated post data (in real apps, this comes from a database)
+    posts = {
         1: {'title': 'Getting Started with Flask', 'content': 'Flask is a micro-framework...'},
         2: {'title': 'Understanding Routes', 'content': 'Routes map URLs to functions...'},
         3: {'title': 'Working with Templates', 'content': 'Jinja2 makes HTML dynamic...'},
     }
-    post = posts.get(post_id)  # Get the post or None if not found
+    post = posts.get(post_id)
     return render_template('post.html', post_id=post_id, post=post)
 
 
-@app.route('/user/<username>/post/<int:post_id>')  # Multiple dynamic segments, visit: /user/Alice/post/1
+@app.route('/user/<username>/post/<int:post_id>')
 def user_post(username, post_id):
     return render_template('user_post.html', username=username, post_id=post_id)
 
 
-@app.route('/about/')  # Trailing slash means both /about and /about/ work
+@app.route('/about/')
 def about():
     return render_template('about.html')
 
 
-@app.route('/links')  # Demonstrates url_for() - generates URLs dynamically (better than hardcoding!)
+@app.route('/links')
 def show_links():
     links = {
         'home': url_for('home'),
@@ -52,8 +52,37 @@ def show_links():
         'user_bob': url_for('user_profile', username='Bob'),
         'post_1': url_for('show_post', post_id=1),
         'post_2': url_for('show_post', post_id=2),
+        'product_1': url_for('product', product_id=1),
+        'product_2': url_for('product', product_id=2),
     }
     return render_template('links.html', links=links)
+
+
+# ✅ Exercise 4.1 – PRODUCT ROUTE
+@app.route('/product/<int:product_id>')
+def product(product_id):
+    products = {
+        1: {'name': 'Laptop','catagory':'electronics', 'price': 55000},
+        2: {'name': 'Smartphone', 'price': 25000},
+        3: {'name': 'Headphones', 'price': 3000}
+    }
+
+    product_data = products.get(product_id)
+
+    return render_template(
+        'product.html',
+        product=product_data,
+        product_id=product_id
+    )
+    
+@app.route('/search')
+def search():
+    query = request.args.get('q')   # get ?q=value from URL
+    if query:
+        return render_template('search.html', query=query)
+    return render_template('search.html', query=None)
+
+    
 
 
 if __name__ == '__main__':

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 5px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .product-card {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .error-card {
+            background: #feb2b2;
+            color: #9b2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #f56565;
+        }
+        .price-tag {
+            font-size: 24px;
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/links">All Links</a>
+			<a href="/search">Search</a>
+        </nav>
+
+        <h1>Product Information</h1>
+
+        {% if product %}
+            <!-- This section shows if the product ID exists in our dictionary -->
+            <div class="product-card">
+                <small>Product ID: #{{ product_id }}</small>
+                <h2>{{ product.name }}</h2>
+				<small>Product catagory: {{product.catagory}}</small>
+                <div class="price-tag">₹{{ product.price }}</div>
+            </div>
+        {% else %}
+            <!-- This section shows if product is None (Not Found) -->
+            <div class="error-card">
+                <h3>404: Product Not Found</h3>
+                <p>Sorry, we couldn't find a product with ID: <strong>{{ product_id }}</strong></p>
+            </div>
+        {% endif %}
+
+        <h2>How it works</h2>
+        <p>This route uses a dynamic integer parameter <code>&lt;int:product_id&gt;</code>:</p>
+        <div class="code-example">
+@app.route('/product/&lt=;int:product_id&gt;')
+def product(product_id):
+    # Flask captures the ID from the URL 
+    # and passes it as a variable!
+        </div>
+    </div>
+</body>
+</html>
