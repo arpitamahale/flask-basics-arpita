@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Details{% endblock %}
+
+{% block content %}
+    <div class="task-detail">
+        <h1>Task: {{ task.title | upper }}</h1>
+        <p>
+            <strong>Status:</strong> 
+            <span class="task-status status-{{ task.status | lower | replace(' ', '-') }}">{{ task.status }}</span>
+        </p>
+        <p>
+            <strong>Priority:</strong> 
+            <span class="task-priority priority-{{ task.priority | lower }}">{{ task.priority }}</span>
+        </p>
+
+        <hr>
+
+        <h3>Update Status</h3>
+        <form method="post" action="{{ url_for('update_status', id=task.id) }}">
+            <select name="status">
+                <option value="Pending" {% if task.status == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="In Progress" {% if task.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                <option value="Completed" {% if task.status == 'Completed' %}selected{% endif %}>Completed</option>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+        
+        <a href="{{ url_for('index') }}" class="back-link">← Back to Task List</a>
+    </div>
+{% endblock %}

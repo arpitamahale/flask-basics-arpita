@@ -1,0 +1,147 @@
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Bar */
+nav {
+    background: #fff;
+    color: #333;
+    padding: 1rem 2rem;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #5a4fcf;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #333;
+}
+
+/* Headings */
+h1 {
+    color: #5a4fcf;
+    text-align: center;
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+    border-left: 3px solid #5a4fcf;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.task-priority, .task-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.priority-high { background: #e53935; }
+.priority-medium { background: #fb8c00; }
+.priority-low { background: #43a047; }
+
+.status-completed { background: #43a047; }
+.status-in-progress { background: #fb8c00; }
+.status-pending { background: #e53935; }
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #5a4fcf;
+}
+
+form input[type="text"],
+form select {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+button {
+    background: #5a4fcf;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #4a3fbf;
+}
+
+/* Task Detail Page */
+.task-detail p {
+    font-size: 1.1rem;
+}
+
+.task-detail strong {
+    color: #5a4fcf;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #5a4fcf;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,149 @@
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    line-height: 1.6;
+    margin: 0;
+}
+
+.container {
+    max-width: 960px; /* Increased width */
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #1e1e1e; /* Slightly lighter dark for cards */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Bar */
+nav {
+    background: #1e1e1e; /* Match container background */
+    color: #fff;
+    padding: 1rem 2rem; /* Adjusted padding */
+    text-align: left; /* Align to the left */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+    color: #bb86fc; /* Vibrant purple for links */
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+/* Headings */
+h1 {
+    color: #bb86fc; /* Vibrant purple for headings */
+    text-align: center;
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #2c2c2c; /* Darker item background */
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+    border-left: 3px solid #bb86fc; /* Accent border */
+}
+
+li:hover {
+    background: #3c3c3c;
+}
+
+li a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.task-priority, .task-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #121212;
+}
+
+/* Badge colors adjusted for dark theme */
+.priority-high { background: #cf6679; } /* Error-like red */
+.priority-medium { background: #fabc2a; } /* Amber/yellow */
+.priority-low { background: #03dac6; } /* Teal */
+
+.status-completed { background: #03dac6; } /* Teal */
+.status-in-progress { background: #fabc2a; } /* Amber/yellow */
+.status-pending { background: #cf6679; } /* Error-like red */
+
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #bb86fc;
+}
+
+form input[type="text"],
+form select {
+    padding: 0.75rem;
+    border: 1px solid #444;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+button {
+    background: #bb86fc;
+    color: #121212;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #a063f7;
+}
+
+/* Task Detail Page */
+.task-detail p {
+    font-size: 1.1rem;
+}
+
+.task-detail strong {
+    color: #bb86fc;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #bb86fc;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

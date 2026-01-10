@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}To-Do App{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link id="theme-style" rel="stylesheet" href=""> <!-- Href will be set by JS -->
+</head>
+<body>
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('add') }}">Add Task</a>
+                <a href="{{ url_for('about') }}">About</a>
+            </div>
+            <button id="theme-switcher">Toggle Theme</button>
+        </div>
+    </nav>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script>
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const themeStyle = document.getElementById('theme-style');
+
+        const darkThemeUrl = "{{ url_for('static', filename='dark-theme.css') }}";
+        const lightThemeUrl = "{{ url_for('static', filename='light-theme.css') }}";
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'light') {
+                themeStyle.href = lightThemeUrl;
+                localStorage.setItem('theme', 'light');
+                themeSwitcher.textContent = 'Switch to Dark Mode';
+            } else {
+                themeStyle.href = darkThemeUrl;
+                localStorage.setItem('theme', 'dark');
+                themeSwitcher.textContent = 'Switch to Light Mode';
+            }
+        }
+
+        // Event listener for the button
+        themeSwitcher.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Set the initial theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+            setTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>
