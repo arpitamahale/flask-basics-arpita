@@ -5,6 +5,7 @@
 {% block content %}
 <!-- Hero Section -->
 <div class="hero">
+    <img src="{{ url_for('static', filename='sage pfp.jpg') }}" alt="Arpita's Profile Picture" class="profile-pic">
     <h1>Hello, I'm {{ info.name }}</h1>
     <p class="title">{{ info.title }}</p>
     <p class="bio">{{ info.bio }}</p>
