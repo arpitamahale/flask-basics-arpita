@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades - Jinja2 Loops</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2d3748; }
+        nav {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 5px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover { color: #2b6cb0; }
+        
+        /* Table Styling */
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .grades-table th {
+            background: #764ba2;
+            color: white;
+            text-align: left;
+            padding: 15px;
+        }
+        .grades-table td {
+            padding: 15px;
+            border-bottom: 1px solid #edf2f7;
+            color: #4a5568;
+        }
+        .grades-table tr:hover {
+            background-color: #f8fafc;
+        }
+        .grade-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre; /* Keeps the formatting */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/skills">Skills</a>
+            <a href="/projects">Projects</a>
+            <a href="/grades">Grades</a>
+			<a href="/search">Search</a>
+        </nav>
+
+        <h1>Academic Report</h1>
+        <p>This page demonstrates passing a dictionary and looping through it using Jinja2.</p>
+
+        <!-- Grades Table -->
+        <table class="grades-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject, score in grades.items() %}
+                <tr>
+                    <td>{{ subject }}</td>
+                    <td><span class="grade-badge">{{ score }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>How It Works</h2>
+        <p>In <code>app.py</code>, we pass a dictionary to the template:</p>
+
+        <div class="code-example">
+@app.route('/grades')
+def grades():
+    subjects_and_grades = {
+        'Mathematics': 'A',
+        'Computer Science': 'A+',
+        'Physics': 'B'
+    }
+    return render_template('grades.html', grades=subjects_and_grades)
+        </div>
+
+        <h2>Jinja2 Dictionary Looping</h2>
+        <p>To display the dictionary, we use the <code>.items()</code> method inside a for-loop:</p>
+
+        <div class="code-example">
+&#123;% for subject, score in grades.items() %&#125;
+    &lt;tr&gt;
+        &lt;td&gt;&#123;&#123; subject &#125;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#123; score &#125;&#125;&lt;/td&gt;
+    &lt;/tr&gt;
+&#123;% endfor %&#125;
+        </div>
+    </div>
+</body>
+</html>

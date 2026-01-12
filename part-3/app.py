@@ -52,6 +52,17 @@ def projects():
     ]
     return render_template('projects.html', projects=project_list)
 
+@app.route('/grades')
+def grades():
+    subjects_and_grades = {
+        'Mathematics': 'A',
+        'Physics': 'B+',
+        'Computer Science': 'A*',
+        'English': 'B',
+        'History': 'A-'
+    }
+    return render_template('grades.html', grades=subjects_and_grades)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
